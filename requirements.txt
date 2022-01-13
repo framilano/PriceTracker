@@ -1,0 +1,4 @@
+selenium
+terminal-colored-print
+undetected-chromedriver
+requests

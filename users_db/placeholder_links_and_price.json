@@ -1,0 +1,12 @@
+{
+    "user_chat_id_1": 
+    {
+        "user_1_product_link": "user_1_desired_price",
+        "user_1_product_link_2": "user_1_desired_price_2"
+    }, 
+    "user_chat_id_2": 
+    {
+        "user_2_product_link": "user_2_desired_price",
+        "user_2_product_link_2": "user_2_desired_price_2"
+    }
+}

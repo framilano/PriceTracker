@@ -1,0 +1,21 @@
+{
+    "chromium_browser_path": "path/to/chromium/based/browser",
+    "telegram_bot_token": "your_telegram_bot_token",
+    "stores": {
+        "store_name_1": {
+            "prefix": "https://www.store_name_1.com/",
+            "title_xpath": "xpath_to_product_name",
+            "price_xpath": "xpath_to_product_price"
+        }, 
+        "store_name_2": {
+            "prefix": "https://www.store_name_2.com/",
+            "title_xpath": "xpath_to_product_name",
+            "price_xpath": "xpath_to_product_price"
+        }, 
+        "store_name_3": {
+            "prefix": "https://www.store_name_3.com/",
+            "title_xpath": "xpath_to_product_name",
+            "price_xpath": "xpath_to_product_price"
+        }
+    }
+}
