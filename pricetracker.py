@@ -16,7 +16,8 @@ def send_telegram(chat_id, product_link, title, float_price, float_desired):
     bot_message = ("[{}]({})\nPrezzo attuale: €{:.2f} (più eventuale spedizione)" + \
     "\nPrezzo desiderato: €{:.2f}").format(title, product_link, float_price, float_desired)
     send_text = 'https://api.telegram.org/bot' + json_config['telegram_bot_token'] + '/sendMessage?chat_id=' + chat_id + '&parse_mode=Markdown&text=' + bot_message
-    get(send_text)
+    req = get(send_text)
+    if (req.status_code != 200): print("Couldn't send Telegram message to {}, maybe your BOT Token or Chat_ID is invalid".format(chat_id))
 
 #Choose to alert user based on last_declared_offer
 def update_user(user, float_price, float_desired, link, title):
@@ -77,6 +78,8 @@ def check_sites(stores_dict, driver, links_and_file_db):
 
 
 def main():
+    global config_file
+    global json_config
     #Hiding from bot detection
     option = uc.ChromeOptions()
     option.add_argument("--headless")
@@ -90,16 +93,21 @@ def main():
     
     # Loop 
     while (True):
-        #Opening links_and_price_file each time to update its content
+        #Opening jsons each time to update its content
         links_and_price_file = open('users_db/links_and_price.json', 'r')
+        config_file = open('configs/config.json', 'r')
         links_and_file_db = json.load(links_and_price_file)
+        json_config = json.load(config_file)
+
  
         check_sites(stores_dict, driver, links_and_file_db)
 
-        #Closing file
+        #Closing files
         links_and_price_file.close()
+        config_file.close()
         
-        print(last_declared_offer)
+        colored_print("//////////", fg_color=196)
+        print("Last saved offers:\n" + str(last_declared_offer))
 
         #Opening a low resource site while idling
         driver.get("https://start.duckduckgo.com/")
