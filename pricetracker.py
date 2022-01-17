@@ -66,8 +66,7 @@ def check_sites(stores_dict, driver, links_and_file_db):
             except:
                 print("Pare che non ci siano prezzi disponibili per\n{}".format(link))
                 continue
-            if ('€' in price.text): print("Nome prodotto: {}\nPrezzo prodotto: {}".format(title.text, price.text))
-            else: print("Nome prodotto: {}\nPrezzo prodotto: {} €".format(title.text, price.text))
+            print("Nome prodotto: {}\nLink: {}\nPrezzo prodotto: {} €\nPrezzo desiderato: {}".format(title.text, link, float_price, float_desired))
 
             #Se il prezzo attuale è inferiore o uguale a quello desiderato
             if (float_price <= float_desired): update_user(user, float_price, float_desired, link, title.text)
