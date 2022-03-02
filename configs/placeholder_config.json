@@ -1,5 +1,6 @@
 {
     "chromium_browser_path": "path/to/chromium/based/browser",
+    "chromium_version": "the_downloaded_chromium_version_integer",
     "telegram_bot_token": "your_telegram_bot_token",
     "stores": {
         "store_name_1": {
